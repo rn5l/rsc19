@@ -1,0 +1,1082 @@
+<h3>Feature Descriptions</h3>
+<p>The 50 most popular meta data features as well as the 16 latent properties factors are excluded in this table.
+    <br/>You can sort the columns by clicking on the table headers.</p>
+<br />
+<table class="sortable-theme-minimal feature-desc" data-sortable>
+    <thead>
+        <tr>
+        <th>Feature Name</th>
+        <th>Brief Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>ci_aircondition</td>
+        <td>Has aircondition? (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_bar</td>
+        <td>Has a bar? (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_gym</td>
+        <td>Has a gym? (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_itemgroup</td>
+        <td>Categorical group (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_lat</td>
+        <td>Latitude (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_lng</td>
+        <td>Longitude (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_parking</td>
+        <td>Has a parking lot? (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_partner</td>
+        <td>Is Trivago Partner? (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_pets</td>
+        <td>Allows pets? (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_pool</td>
+        <td>Has a Pool? (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_rating_per_price</td>
+        <td>Rating price ratio (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_restaurant</td>
+        <td>Has a restaurant? (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_spa</td>
+        <td>Has a spa? (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_stars</td>
+        <td>Number of stars (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_stars_per_price</td>
+        <td>Stars price ratio (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_superior</td>
+        <td>Is a superior hotel? (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_wifi_lobby</td>
+        <td>Has WiFi in the lobby? (Crawled)</td>
+        </tr>
+        <tr>
+        <td>ci_wifi_room</td>
+        <td>Has Wifi in the room? (Crawled)</td>
+        </tr>
+        <tr>
+        <td>city</td>
+        <td>City identifier</td>
+        </tr>
+        <tr>
+        <td>combine_pop_click_per_impression_all_count</td>
+        <td>Click popularity / number of item impression * item count in session</td>
+        </tr>
+        <tr>
+        <td>combine_pop_click_per_view_all_count</td>
+        <td>Click popularity / number of item interactions * item count in session</td>
+        </tr>
+        <tr>
+        <td>day</td>
+        <td>Day of the week</td>
+        </tr>
+        <tr>
+        <td>device</td>
+        <td>Device identifier</td>
+        </tr>
+        <tr>
+        <td>distance_city</td>
+        <td>Haversine distance to city center</td>
+        </tr>
+        <tr>
+        <td>distance_last</td>
+        <td>Haversine distance to last poi, city center otherwise</td>
+        </tr>
+        <tr>
+        <td>distance_last_per_price</td>
+        <td>Distance price ratio</td>
+        </tr>
+        <tr>
+        <td>distance_last_per_rating</td>
+        <td>Distance rating ratio</td>
+        </tr>
+        <tr>
+        <td>features</td>
+        <td>Number of hotel properties</td>
+        </tr>
+        <tr>
+        <td>filter_count</td>
+        <td>Number of filters in the session</td>
+        </tr>
+        <tr>
+        <td>filter_current_match_session</td>
+        <td>Intersection of current filter column and item properties</td>
+        </tr>
+        <tr>
+        <td>filter_match_session</td>
+        <td>Intersection of all filters in session and item properties</td>
+        </tr>
+        <tr>
+        <td>hour</td>
+        <td>Hour of the day adjusted to platform timezone</td>
+        </tr>
+        <tr>
+        <td>hour_cat1</td>
+        <td>Mapping to night, morning, afternoon, and evening</td>
+        </tr>
+        <tr>
+        <td>hour_cat2</td>
+        <td>Shifted mapping to night, morning, afternoon, and evening</td>
+        </tr>
+        <tr>
+        <td>ii_count</td>
+        <td>Number of images</td>
+        </tr>
+        <tr>
+        <td>ii_partner_count</td>
+        <td>Number of partner sites providing images</td>
+        </tr>
+        <tr>
+        <td>ii_partner_max</td>
+        <td>Partern identifiert with maximum number of images</td>
+        </tr>
+        <tr>
+        <td>impressions</td>
+        <td>Item identifier</td>
+        </tr>
+        <tr>
+        <td>latent_sim_bprc_click128</td>
+        <td>Cosine similarity for BPR latent vectors (128, only clicks)</td>
+        </tr>
+        <tr>
+        <td>latent_sim_bprc_click32</td>
+        <td>Cosine similarity for BPR latent vectors (32, only clicks)</td>
+        </tr>
+        <tr>
+        <td>latent_sim_bprc_item128</td>
+        <td>Cosine similarity for BPR latent vectors (128, all interactions)</td>
+        </tr>
+        <tr>
+        <td>latent_sim_bprc_item32</td>
+        <td>Cosine similarity for BPR latent vectors (32, all interactions)</td>
+        </tr>
+        <tr>
+        <td>latent_sim_d2v_click32</td>
+        <td>Cosine similarity for Doc2Vec latent vectors (32, only clicks)</td>
+        </tr>
+        <tr>
+        <td>latent_sim_d2v_item32</td>
+        <td>Cosine similarity for Doc2Vec latent vectors (32, all interactions)</td>
+        </tr>
+        <tr>
+        <td>lc_ci_stars_permean1</td>
+        <td>Stars / mean stars of 3 items (1 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_ci_stars_permean2</td>
+        <td>Stars / mean stars of 5 items (2 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_ci_stars_permean3</td>
+        <td>Stars / mean stars of 7 items (3 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_ci_stars_permean4</td>
+        <td>Stars / mean stars of 9 items (4 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_ci_stars_post1</td>
+        <td>Difference to stars of the item 1 below</td>
+        </tr>
+        <tr>
+        <td>lc_ci_stars_post2</td>
+        <td>Difference to stars of the item 2 below</td>
+        </tr>
+        <tr>
+        <td>lc_ci_stars_post3</td>
+        <td>Difference to stars of the item 3 below</td>
+        </tr>
+        <tr>
+        <td>lc_ci_stars_pre1</td>
+        <td>Difference to stars of the item 1 above</td>
+        </tr>
+        <tr>
+        <td>lc_ci_stars_pre2</td>
+        <td>Difference to stars of the item 2 above</td>
+        </tr>
+        <tr>
+        <td>lc_ci_stars_pre3</td>
+        <td>Difference to stars of the item 3 above</td>
+        </tr>
+        <tr>
+        <td>lc_distance_last_permean1</td>
+        <td>Distance / mean stars of 3 items (1 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_distance_last_permean2</td>
+        <td>Distance / mean stars of 5 items (2 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_distance_last_permean3</td>
+        <td>Distance / mean stars of 7 items (3 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_distance_last_permean4</td>
+        <td>Distance / mean stars of 9 items (4 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_distance_last_post1</td>
+        <td>Difference to distance of the item 1 below</td>
+        </tr>
+        <tr>
+        <td>lc_distance_last_post2</td>
+        <td>Difference to distance of the item 2 below</td>
+        </tr>
+        <tr>
+        <td>lc_distance_last_post3</td>
+        <td>Difference to distance of the item 3 below</td>
+        </tr>
+        <tr>
+        <td>lc_distance_last_pre1</td>
+        <td>Difference to distance of the item 1 above</td>
+        </tr>
+        <tr>
+        <td>lc_distance_last_pre2</td>
+        <td>Difference to distance of the item 2 above</td>
+        </tr>
+        <tr>
+        <td>lc_distance_last_pre3</td>
+        <td>Difference to distance of the item 3 above</td>
+        </tr>
+        <tr>
+        <td>lc_prices_permean1</td>
+        <td>Price / mean stars of 3 items (1 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_prices_permean2</td>
+        <td>Price / mean stars of 5 items (2 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_prices_permean3</td>
+        <td>Price / mean stars of 7 items (3 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_prices_permean4</td>
+        <td>Price / mean stars of 9 items (4 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_prices_post1</td>
+        <td>Difference to price of the item 1 below</td>
+        </tr>
+        <tr>
+        <td>lc_prices_post2</td>
+        <td>Difference to price of the item 2 below</td>
+        </tr>
+        <tr>
+        <td>lc_prices_post3</td>
+        <td>Difference to price of the item 3 below</td>
+        </tr>
+        <tr>
+        <td>lc_prices_pre1</td>
+        <td>Difference to price of the item 1 above</td>
+        </tr>
+        <tr>
+        <td>lc_prices_pre2</td>
+        <td>Difference to price of the item 2 above</td>
+        </tr>
+        <tr>
+        <td>lc_prices_pre3</td>
+        <td>Difference to price of the item 3 above</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_index_permean1</td>
+        <td>Rating / mean stars of 3 items (1 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_index_permean2</td>
+        <td>Rating / mean stars of 5 items (2 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_index_permean3</td>
+        <td>Rating / mean stars of 7 items (3 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_index_permean4</td>
+        <td>Rating / mean stars of 9 items (4 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_index_post1</td>
+        <td>Difference to rating of the item 1 below</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_index_post2</td>
+        <td>Difference to rating of the item 2 below</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_index_post3</td>
+        <td>Difference to rating of the item 3 below</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_index_pre1</td>
+        <td>Difference to rating of the item 1 above</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_index_pre2</td>
+        <td>Difference to rating of the item 2 above</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_index_pre3</td>
+        <td>Difference to rating of the item 3 above</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_percentage_permean1</td>
+        <td>Exact rating / mean stars of 3 items (1 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_percentage_permean2</td>
+        <td>Exact rating / mean stars of 5 items (2 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_percentage_permean3</td>
+        <td>Exact rating / mean stars of 7 items (3 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_percentage_permean4</td>
+        <td>Exact rating / mean stars of 9 items (4 above and below)</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_percentage_post1</td>
+        <td>Difference to exact rating of the item 1 below</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_percentage_post2</td>
+        <td>Difference to exact rating of the item 2 below</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_percentage_post3</td>
+        <td>Difference to exact rating of the item 3 below</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_percentage_pre1</td>
+        <td>Difference to exact rating of the item 1 above</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_percentage_pre2</td>
+        <td>Difference to exact rating of the item 2 above</td>
+        </tr>
+        <tr>
+        <td>lc_ri_rating_percentage_pre3</td>
+        <td>Difference to exact rating of the item 3 above</td>
+        </tr>
+        <tr>
+        <td>num_impressions</td>
+        <td>Number of items in displayed list</td>
+        </tr>
+        <tr>
+        <td>platform</td>
+        <td>Platform identifier</td>
+        </tr>
+        <tr>
+        <td>pop_all</td>
+        <td>Number of all item interactions</td>
+        </tr>
+        <tr>
+        <td>pop_all_per_impression</td>
+        <td>Number of all item interactions / number of item impressions</td>
+        </tr>
+        <tr>
+        <td>pop_click</td>
+        <td>Number of item clicks</td>
+        </tr>
+        <tr>
+        <td>pop_click_per_deal</td>
+        <td>Number of item clicks / item deal interactions</td>
+        </tr>
+        <tr>
+        <td>pop_click_per_image</td>
+        <td>Number of item clicks / item image interactions</td>
+        </tr>
+        <tr>
+        <td>pop_click_per_impression</td>
+        <td>Number of item clicks / item impressions</td>
+        </tr>
+        <tr>
+        <td>pop_click_per_rating</td>
+        <td>Number of item clicks / item rating interactions</td>
+        </tr>
+        <tr>
+        <td>pop_click_per_view</td>
+        <td>Number of item clicks / item interactions (not click)</td>
+        </tr>
+        <tr>
+        <td>pop_click_per_view_sessions</td>
+        <td>Number of sessions with item clicks / sessions with item interactions (not click)</td>
+        </tr>
+        <tr>
+        <td>pop_deal</td>
+        <td>Number of item deal interactions</td>
+        </tr>
+        <tr>
+        <td>pop_deal_per_impression</td>
+        <td>Number of item deal interactions / item impressions</td>
+        </tr>
+        <tr>
+        <td>pop_image</td>
+        <td>Number of item image interactions</td>
+        </tr>
+        <tr>
+        <td>pop_image_per_impression</td>
+        <td>Number of item image interactions / item impressions</td>
+        </tr>
+        <tr>
+        <td>pop_impressions</td>
+        <td>Number of impression</td>
+        </tr>
+        <tr>
+        <td>pop_platform_*</td>
+        <td>Same as pop but for the specific platform</td>
+        </tr>
+        <tr>
+        <td>pop_rating</td>
+        <td>Number of item rating interactions</td>
+        </tr>
+        <tr>
+        <td>pop_rating_per_impression</td>
+        <td>Number of item rating interactions / item impressions</td>
+        </tr>
+        <tr>
+        <td>pop_view</td>
+        <td>Number of item interactions (no click)</td>
+        </tr>
+        <tr>
+        <td>pop_view_per_impression</td>
+        <td>Number of item interactions (no click) / item impressions</td>
+        </tr>
+        <tr>
+        <td>pos_city_max</td>
+        <td>Maximum clicked position in city</td>
+        </tr>
+        <tr>
+        <td>pos_city_mean</td>
+        <td>Mean clicked position in city</td>
+        </tr>
+        <tr>
+        <td>pos_city_mean_dist</td>
+        <td>Difference to mean clicked position in city</td>
+        </tr>
+        <tr>
+        <td>pos_city_min</td>
+        <td>Min clicked position in city</td>
+        </tr>
+        <tr>
+        <td>pos_city_platform_max</td>
+        <td>Maximum clicked position in city for the platform</td>
+        </tr>
+        <tr>
+        <td>pos_city_platform_mean</td>
+        <td>Mean clicked position in city for the platform</td>
+        </tr>
+        <tr>
+        <td>pos_city_platform_mean_dist</td>
+        <td>Difference to mean clicked position in city for the platform</td>
+        </tr>
+        <tr>
+        <td>pos_city_platform_min</td>
+        <td>Min clicked position in city for the platform</td>
+        </tr>
+        <tr>
+        <td>pos_click_city_count</td>
+        <td>Clicks on this position in the city</td>
+        </tr>
+        <tr>
+        <td>pos_click_city_platform_count</td>
+        <td>Clicks on this position in the city for the platform</td>
+        </tr>
+        <tr>
+        <td>pos_click_city_platform_ratio</td>
+        <td>Clicks on this position in the city on the platform / clicks for the city&nbsp;&nbsp;on the platform</td>
+        </tr>
+        <tr>
+        <td>pos_click_city_ratio</td>
+        <td>Clicks on this position in the city / clicks for the city</td>
+        </tr>
+        <tr>
+        <td>pos_click_count</td>
+        <td>Clicks on this position</td>
+        </tr>
+        <tr>
+        <td>pos_click_device_count</td>
+        <td>Clicks on this position on this device</td>
+        </tr>
+        <tr>
+        <td>pos_click_device_ratio</td>
+        <td>Clicks on this position on this device / clicks on this device</td>
+        </tr>
+        <tr>
+        <td>pos_click_platform_count</td>
+        <td>Clicks on this position on this platform</td>
+        </tr>
+        <tr>
+        <td>pos_click_platform_ratio</td>
+        <td>Clicks on this position on this platform / Clicks on this platform</td>
+        </tr>
+        <tr>
+        <td>pos_click_ratio</td>
+        <td>Clicks on this position / overall clicks</td>
+        </tr>
+        <tr>
+        <td>pos_device_mean</td>
+        <td>Mean clicked position on this device type</td>
+        </tr>
+        <tr>
+        <td>pos_device_mean_dist</td>
+        <td>Difference to mean clicked position on this device type</td>
+        </tr>
+        <tr>
+        <td>pos_invfilter_count</td>
+        <td>Current list different without indicating log entry</td>
+        </tr>
+        <tr>
+        <td>pos_item_dist</td>
+        <td>Difference to mean item click position</td>
+        </tr>
+        <tr>
+        <td>pos_item_max</td>
+        <td>Maximum item click position</td>
+        </tr>
+        <tr>
+        <td>pos_item_mean</td>
+        <td>Mean item click position</td>
+        </tr>
+        <tr>
+        <td>pos_item_min</td>
+        <td>Min item click position</td>
+        </tr>
+        <tr>
+        <td>pos_platform_mean</td>
+        <td>Mean clicked position on this platform</td>
+        </tr>
+        <tr>
+        <td>pos_platform_mean_dist</td>
+        <td>Difference to mean clicked position on this platform</td>
+        </tr>
+        <tr>
+        <td>pos_session_2last</td>
+        <td>Second last interaction position in session</td>
+        </tr>
+        <tr>
+        <td>pos_session_altering</td>
+        <td>Last interaction position smaller than second last position?</td>
+        </tr>
+        <tr>
+        <td>pos_session_click_2last</td>
+        <td>Second last clicked position in session</td>
+        </tr>
+        <tr>
+        <td>pos_session_click_altering</td>
+        <td>Last clicked position smaller than second last position?</td>
+        </tr>
+        <tr>
+        <td>pos_session_click_direction</td>
+        <td>pos_session_click_last - pos_session_click_2last</td>
+        </tr>
+        <tr>
+        <td>pos_session_click_dist</td>
+        <td>Difference to last clicked position</td>
+        </tr>
+        <tr>
+        <td>pos_session_click_last</td>
+        <td>Last clicked position</td>
+        </tr>
+        <tr>
+        <td>pos_session_click_max</td>
+        <td>Max clicked position in session</td>
+        </tr>
+        <tr>
+        <td>pos_session_click_mean</td>
+        <td>Mean clicked position in session</td>
+        </tr>
+        <tr>
+        <td>pos_session_click_min</td>
+        <td>Min clicked position in session</td>
+        </tr>
+        <tr>
+        <td>pos_session_direction</td>
+        <td>pos_session_last - pos_session_2last</td>
+        </tr>
+        <tr>
+        <td>pos_session_dist</td>
+        <td>Difference to last interaction position</td>
+        </tr>
+        <tr>
+        <td>pos_session_last</td>
+        <td>Last interaction position</td>
+        </tr>
+        <tr>
+        <td>pos_session_max</td>
+        <td>Max interaction position in session</td>
+        </tr>
+        <tr>
+        <td>pos_session_mean</td>
+        <td>Mean interaction position in session</td>
+        </tr>
+        <tr>
+        <td>pos_session_min</td>
+        <td>Min interaction position in session</td>
+        </tr>
+        <tr>
+        <td>pos_session_click_wrong_*</td>
+        <td>Similar to pos_session_click_*. Ignoring problems in the data, where the last displayed list doesnt fit the previous interactions.</td>
+        </tr>
+        <tr>
+        <td>position</td>
+        <td>Position in displayed list</td>
+        </tr>
+        <tr>
+        <td>price_city_all_dist</td>
+        <td>Difference to mean price in city for all item interactions</td>
+        </tr>
+        <tr>
+        <td>price_city_all_mean</td>
+        <td>Mean price in city for all item interactions</td>
+        </tr>
+        <tr>
+        <td>price_city_all_minmax_dist</td>
+        <td>Min-max normalized price in city for all item interactions</td>
+        </tr>
+        <tr>
+        <td>price_city_all_permean</td>
+        <td>Price / mean price in city for all item interactions</td>
+        </tr>
+        <tr>
+        <td>price_city_click_dist</td>
+        <td>Difference to mean price in city for all item clicks</td>
+        </tr>
+        <tr>
+        <td>price_city_click_mean</td>
+        <td>Mean price in city for all item clicks</td>
+        </tr>
+        <tr>
+        <td>price_city_click_minmax_dist</td>
+        <td>Min-max normalized price in city for all item clicks</td>
+        </tr>
+        <tr>
+        <td>price_city_click_permean</td>
+        <td>Price / mean price in city for all item clicks</td>
+        </tr>
+        <tr>
+        <td>price_city_impressions_dist</td>
+        <td>Difference to mean price in city for all item impressions</td>
+        </tr>
+        <tr>
+        <td>price_city_impressions_mean</td>
+        <td>Mean price in city for all item impressions</td>
+        </tr>
+        <tr>
+        <td>price_city_impressions_minmax_dist</td>
+        <td>Min-max normalized price in city for all item impressions</td>
+        </tr>
+        <tr>
+        <td>price_city_impressions_permean</td>
+        <td>Price / price in city for all item impressions</td>
+        </tr>
+        <tr>
+        <td>price_city_platform_*</td>
+        <td>Same as price_city_* for a specific paltform</td>
+        </tr>
+        <tr>
+        <td>price_city_view_dist</td>
+        <td>Difference to mean price in city for all item interactions (no click)</td>
+        </tr>
+        <tr>
+        <td>price_city_view_mean</td>
+        <td>Mean price in city for all item interactions&nbsp;&nbsp;(no click)</td>
+        </tr>
+        <tr>
+        <td>price_city_view_minmax_dist</td>
+        <td>Min-max normalized price in city for all item interactions&nbsp;&nbsp;(no click)</td>
+        </tr>
+        <tr>
+        <td>price_city_view_permean</td>
+        <td>Price / mean price in city for all item interactions&nbsp;&nbsp;(no click)</td>
+        </tr>
+        <tr>
+        <td>price_item_*</td>
+        <td>Same as price_city_* for a specific item</td>
+        </tr>
+        <tr>
+        <td>price_platform_*</td>
+        <td>Same as price_city_* for a specific platform</td>
+        </tr>
+        <tr>
+        <td>price_list_impressions_dist</td>
+        <td>Difference to mean price of displayed hotel list</td>
+        </tr>
+        <tr>
+        <td>price_list_impressions_mean</td>
+        <td>Mean price of displayed hotel list</td>
+        </tr>
+        <tr>
+        <td>price_list_impressions_permean</td>
+        <td>Price / mean price of displayed hotel list</td>
+        </tr>
+        <tr>
+        <td>properties_match_session_intersect</td>
+        <td>Intersection of all hotel properties in session / properties of candidate item</td>
+        </tr>
+        <tr>
+        <td>properties_match_session_union</td>
+        <td>Jaccard index of the union of all hotel properties in session and the properties of the candidate item</td>
+        </tr>
+        <tr>
+        <td>rank_distance</td>
+        <td>Ranking (1 to 25) by distance</td>
+        </tr>
+        <tr>
+        <td>rank_distance_price</td>
+        <td>Ranking (1 to 25) by distance price ratio</td>
+        </tr>
+        <tr>
+        <td>rank_distance_rating</td>
+        <td>Ranking (1 to 25) by distance rating ratio</td>
+        </tr>
+        <tr>
+        <td>rank_pop_count</td>
+        <td>Ranking (1 to 25) by item click, view, impression popularity</td>
+        </tr>
+        <tr>
+        <td>rank_pop_relative</td>
+        <td>Ranking (1 to 25) by item click session ratio, click per view, click per impression</td>
+        </tr>
+        <tr>
+        <td>rank_prices</td>
+        <td>Ranking (1 to 25) by prices</td>
+        </tr>
+        <tr>
+        <td>rank_rating</td>
+        <td>Ranking (1 to 25) by rating</td>
+        </tr>
+        <tr>
+        <td>rank_rating_price</td>
+        <td>Ranking (1 to 25) by rating price ratio</td>
+        </tr>
+        <tr>
+        <td>rank_sum</td>
+        <td>Borda count over the ranking features for the displayed list</td>
+        </tr>
+        <tr>
+        <td>ratio_rating_click_count</td>
+        <td>Number of clicks on rating</td>
+        </tr>
+        <tr>
+        <td>ratio_rating_click_ratio</td>
+        <td>Clicks on rating / overall clicks</td>
+        </tr>
+        <tr>
+        <td>ratio_rating_click_device_*</td>
+        <td>Similar to ratio_rating_click_* for specific device</td>
+        </tr>
+        <tr>
+        <td>ratio_rating_click_platform_*</td>
+        <td>Similar to ratio_rating_click_* for specific platform</td>
+        </tr>
+        <tr>
+        <td>ratio_rating_click_city_*</td>
+        <td>Similar to ratio_rating_click_* for specific city</td>
+        </tr>
+        <tr>
+        <td>ratio_stars_*</td>
+        <td>Similar to ratio_rating_*</td>
+        </tr>
+        <tr>
+        <td>ri_awards</td>
+        <td>Has an award? (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_breakfast</td>
+        <td>Has breakfast included? (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_cleanliness</td>
+        <td>Rating for cleanliness (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_comfort</td>
+        <td>Rating for comfort (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_facilities</td>
+        <td>Rating for facilities (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_food_and_drinks</td>
+        <td>Rating for food and drinks (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_hotel_condition</td>
+        <td>Rating for condition (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_location</td>
+        <td>Rating for location (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_rating_advertiser</td>
+        <td>Is a rating advertised? (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_rating_count</td>
+        <td>Number of ratings (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_rating_index</td>
+        <td>Rating from 1 to 5 (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_rating_percentage</td>
+        <td>Exact rating in percent (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_room</td>
+        <td>Rating for rooms (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_service</td>
+        <td>Rating for service (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_tested</td>
+        <td>Is tested? (crawled)</td>
+        </tr>
+        <tr>
+        <td>ri_value_for_money</td>
+        <td>Value for money score (crawled)</td>
+        </tr>
+        <tr>
+        <td>session_all_count</td>
+        <td>Session length</td>
+        </tr>
+        <tr>
+        <td>session_{action}_count</td>
+        <td>Number of actions of type {actions} in the session</td>
+        </tr>
+        <tr>
+        <td>session_{action}_count_rel</td>
+        <td>Number of actions of type {actions} in the session / session length</td>
+        </tr>
+        <tr>
+        <td>session_dwell</td>
+        <td>Sum of dwell times</td>
+        </tr>
+        <tr>
+        <td>session_dwell_max</td>
+        <td>Maximum dwell time</td>
+        </tr>
+        <tr>
+        <td>session_dwell_mean</td>
+        <td>Mean dwell time</td>
+        </tr>
+        <tr>
+        <td>session_dwell_min</td>
+        <td>Min dwell time</td>
+        </tr>
+        <tr>
+        <td>session_item_{action}_count</td>
+        <td>Number of actions for the item of type {actions} in the session</td>
+        </tr>
+        <tr>
+        <td>session_item_{action}_count_rel</td>
+        <td>Number of actions for the item of type {actions} in the session / session length</td>
+        </tr>
+        <tr>
+        <td>session_item_{action}_linear</td>
+        <td>Cummulative sum for item actions of type {actions}, when applying a linear decay to the session steps starting with 1 for the last step</td>
+        </tr>
+        <tr>
+        <td>session_item_{action}_mrr</td>
+        <td>Cummulative sum for item actions of type {actions}, when applying an mrr-like decay to the session steps starting with 1 for the last step</td>
+        </tr>
+        <tr>
+        <td>session_item_dwell</td>
+        <td>Sum of item dwell times</td>
+        </tr>
+        <tr>
+        <td>session_item_dwell_max</td>
+        <td>Maximum dwell time for the item</td>
+        </tr>
+        <tr>
+        <td>session_item_dwell_mean</td>
+        <td>Mean dwell time for the item</td>
+        </tr>
+        <tr>
+        <td>session_item_dwell_min</td>
+        <td>Min dwell time for the item</td>
+        </tr>
+        <tr>
+        <td>session_item_max_step</td>
+        <td>Maximum step for the item in the session</td>
+        </tr>
+        <tr>
+        <td>session_item_max_time</td>
+        <td>Distance to last interaction for item in the session in seconds</td>
+        </tr>
+        <tr>
+        <td>session_item_min_step</td>
+        <td>Min step for the item in the session</td>
+        </tr>
+        <tr>
+        <td>session_item_min_time</td>
+        <td>Distance to first interaction for item in the session in seconds</td>
+        </tr>
+        <tr>
+        <td>session_last_action</td>
+        <td>Last interaction type in the session</td>
+        </tr>
+        <tr>
+        <td>session_last_all_filter</td>
+        <td>Last filter applied in the session</td>
+        </tr>
+        <tr>
+        <td>session_last_all_poi</td>
+        <td>Last poi selected in the session</td>
+        </tr>
+        <tr>
+        <td>session_last_all_sort</td>
+        <td>Last sorting applied in the session</td>
+        </tr>
+        <tr>
+        <td>session_last_filter</td>
+        <td>Last filter applied in the session for the same city</td>
+        </tr>
+        <tr>
+        <td>session_last_poi</td>
+        <td>Last poi selected in the session for the same city</td>
+        </tr>
+        <tr>
+        <td>session_last_sort</td>
+        <td>Last sorting applied in the session for the same city</td>
+        </tr>
+        <tr>
+        <td>session_size</td>
+        <td>Session length</td>
+        </tr>
+        <tr>
+        <td>session_sort_{reference}</td>
+        <td>Occured search/filter reference {reference} in the session</td>
+        </tr>
+        <tr>
+        <td>session_city_*</td>
+        <td>Similar to session_item_* but for the specific city instead of the item</td>
+        </tr>
+        <tr>
+        <td>user_all_count</td>
+        <td>Number of all user interactions</td>
+        </tr>
+        <tr>
+        <td>user_item_all_count</td>
+        <td>Number of user interactions for the item excluding the current session</td>
+        </tr>
+        <tr>
+        <td>user_item_all_count_rel</td>
+        <td>Number of user interactions for the item / all user interactions</td>
+        </tr>
+        <tr>
+        <td>user_distance_click_last_mean</td>
+        <td>Mean clicked distance for the user</td>
+        </tr>
+        <tr>
+        <td>user_distance_click_last_mean_dist</td>
+        <td>Difference to mean clicked distance for the user</td>
+        </tr>
+        <tr>
+        <td>user_distance_all_last_mean</td>
+        <td>Mean distance of all interactions for the user</td>
+        </tr>
+        <tr>
+        <td>user_distance_all_last_mean_dist</td>
+        <td>Difference to mean distance of all interactions for the user</td>
+        </tr>
+        <tr>
+        <td>user_distance_city_*</td>
+        <td>Same as user_distance_* for a specific city</td>
+        </tr>
+        <tr>
+        <td>user_price_all_mean</td>
+        <td>Mean price of all interactions for the user</td>
+        </tr>
+        <tr>
+        <td>user_price_all_mean_dist</td>
+        <td>Difference to mean price of all interactions for the user</td>
+        </tr>
+        <tr>
+        <td>user_price_all_city_all_permean_dist</td>
+        <td>Difference of price to mean price of all user interactions, both normalized by mean impression price in the city</td>
+        </tr>
+        <tr>
+        <td>user_price_all_city_impressions_permean_dist</td>
+        <td>Difference of price to mean price of all user interactions, both normalized by mean interaction price in the city</td>
+        </tr>
+        <tr>
+        <td>user_price_all_platform_all_permean_dist</td>
+        <td>Difference of price to mean price of all user interactions, both normalized by mean impression price on the platform</td>
+        </tr>
+        <tr>
+        <td>user_price_all_platform_impressions_permean_dist</td>
+        <td>Difference of price to mean price of all user interactions, both normalized by mean interaction price on the platform</td>
+        </tr>
+        <tr>
+        <td>user_price_all_city_platform_all_permean_dist</td>
+        <td>Difference of price to mean price of all user interactions, both normalized by mean impression price for the city on the platform</td>
+        </tr>
+        <tr>
+        <td>user_price_all_city_platform_impressions_permean_dist</td>
+        <td>Difference of price to mean price of all user interactions, both normalized by mean interaction price for the city on the platform</td>
+        </tr>
+        <tr>
+        <td>user_price_click_*</td>
+        <td>Same as user_price_all_* for only click events</td>
+        </tr>
+        <tr>
+        <td>user_price_city_*</td>
+        <td>Similar to user_price_*, but for the current city</td>
+        </tr>
+        <tr>
+        <td>user_rating_click_mean</td>
+        <td>Mean clicked rating for the user</td>
+        </tr>
+        <tr>
+        <td>user_rating_click_mean_dist</td>
+        <td>Difference to mean clicked rating for the user</td>
+        </tr>
+        <tr>
+        <td>user_rating_all_mean</td>
+        <td>Mean rating of all interactions for the user</td>
+        </tr>
+        <tr>
+        <td>user_rating_all_mean_dist</td>
+        <td>Difference to mean rating of all interactions for the user</td>
+        </tr>
+        <tr>
+        <td>user_rating_city_*</td>
+        <td>Similar to user_rating_* for a specific city</td>
+        </tr>
+    </tbody>
+  </table>
