@@ -1,0 +1,185 @@
+<!DOCTYPE html >
+
+<html>
+
+<head>
+
+	<title>2019 RecSys Challenge - Additional Information</title>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Roboto+Slab|Zilla+Slab" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="css/sortable-theme-tu.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<!--<link rel="stylesheet" href="css/style_anon.css" />-->
+	<script src="js/sortable.min.js"></script>
+	
+	<link rel="include" href="tables/description.html" data-target="desc" />
+	<link rel="include" href="tables/importance.html" data-target="imp" />
+
+	<script type="text/javascript">
+		
+		function round( element, size ) {
+			var rounded = parseFloat( $(element).html() ).toFixed( size );
+			$(element).html( rounded );
+		}
+	
+		$( document ).ready( function() {
+			
+			$( "link[rel=include]" ).each( function() {
+				target = $( this ).attr("data-target");
+				url = $( this ).attr("href");
+				$( "#"+target ).load( url, function() {
+					$( this ).find( ".algo" ).each( function() {
+						name = $(this).html();
+						el = $(this).closest( ".tab-pane" ).find( ".configs ."+name );
+						$(this).attr( "title", el.html() );
+						$(this).attr( "data-placement", "top" );
+						$(this).attr( "data-container", "body" );
+						$(this).attr( "data-html", "true" );
+					});
+					$( this ).find( ".algo" ).tooltip();
+					
+					$( this ).find( ".num-4" ).each( function() {
+						round(this,4);
+					});
+					
+					$( this ).find( ".num-3" ).each( function() {
+						round(this,3);
+					});
+					
+					$( this ).find( ".num2" ).each( function() {
+						round(this, 2);
+					});
+					
+					window.Sortable.initTable( $( this ).find( ".sortable-theme-minimal" ).get(0)  );
+					if ( $( this ).find( ".sortable-theme-minimal" ).length > 1 ) {
+						window.Sortable.initTable( $( this ).find( ".sortable-theme-minimal" ).get(1)  );
+						window.Sortable.initTable( $( this ).find( ".sortable-theme-minimal" ).get(2)  );
+					}
+					//$( this ).find( ".sortable-theme-minimal" ).DataTable();
+					$( this ).find( ".sortable-theme-minimal th:nth-child(2)" ).click();
+					$( this ).find( ".sortable-theme-minimal.feature-desc th:nth-child(1)" ).click();
+					
+				} );
+
+			} );
+			
+			$( "table.hyper-params td:not(:nth-child(1)):not(:nth-child(2))" ).each( function() {
+				round(this,2);
+			} );
+			
+			$( "table.hyper-space tr:not(:nth-child(1)):not(:nth-child(2)) td:not(:nth-child(1))" ).each( function() {
+				round(this,2);
+			} );
+			
+			$( ".num-4" ).each( function() {
+				round(this,4);
+			});
+			
+			$( ".num-3" ).each( function() {
+				round(this,3);
+			});
+			
+			$( ".num-2" ).each( function() {
+				round(this,2);
+			});
+			
+		} );
+	</script>
+	
+</head>
+
+<body>
+
+<div class="mainbox">
+			
+	<h2>
+		<span class="subtext italic">
+			RecSys Challenge 2019 Workshop - Copenhagen, Denmark
+		</span> <br />
+		<span class="highlighted">
+			Learning to Rank Hotels for Search and Recommendation <br/> from Session-based Interaction Logs and Meta Data
+		</span> <br />
+		<span class="subtext">
+			Additional Information: Feature Descriptions and Importance
+		</span>
+	</h2>    
+	
+	<hr/>
+	
+	<div class="authors">
+		
+		<div class="author">
+			Malte Ludewig <br/>
+			<span class="mail">malte.ludewig [at] tu-dortmund.de</span><br/>
+		</div>
+        
+        <div class="author">
+			Dietmar Jannach <br/>
+			<span class="mail">dietmar.jannach [at] aau.at</span><br/>
+		</div>
+		
+	</div>
+	
+	<hr/>
+	
+	<div class="abstract">
+		Being able to provide high quality search and recommendation services can be a decisive success factor for online applications, e.g., in today's competitive e-commerce environments. Context-adaptive and personalized item suggestions can help to both improve the user experience and the provider's short-term and long-term revenue. However, automating this form of adaptation can be challenging, when no long-term preference profiles are available. In these situations, the user's preferences and short-term intent must be derived from the last few observed interactions. 
+		<br/>
+		In this work, we present a novel hybrid approach to rank hotels based on the user's most recent interactions and meta data about the available items. The developed recommendation approach can be used both for personalized search and session-based recommendation scenarios. Technically, we employed a combination of a gradient-boosted learning-to-rank model, Bayesian Personalized Ranking and an embedding model using Doc2Vec. The approach was successfully evaluated in the context of the ACM RecSys 2019 challenge, where it led our team <i>letoh govatri</i> to place four on the leaderboard, with a ranking accuracy that was only 0.5% below the winning approach. 
+		<br/>
+		<br/>
+	</div>
+	
+	<nav>
+		<ul class="nav nav-tabs">
+		  <li class="active"><a data-toggle="tab" href="#sources">Source Code and Dataset</a></li>
+		  <li><a data-toggle="tab" href="#desc">Feature Description</a></li>
+		  <li><a data-toggle="tab" href="#imp">Feature Importance</a></li>
+		</ul>
+	</nav>
+	
+	<div class="tab-content">
+	
+		<div id="sources" class="tab-pane fade in active">
+			
+			<h3>Source Code and Datasets</h3>
+			
+			<p>
+				The full source code of our solution can be found here: <br/>
+				<a href="https://github.com/rn5l/rsc19">https://github.com/rn5l/rsc19</a>
+			</p>
+			
+			<p>
+				The dataset used in the competition can be downloaded here: <br/>
+				<a href="https://recsys.trivago.cloud/challenge/dataset/">https://recsys.trivago.cloud/challenge/dataset/</a>
+			</p>
+			
+									
+		</div>
+		
+		<div id="desc" class="tab-pane fade in">
+			
+			
+			
+		</div>
+		
+		<div id="imp" class="tab-pane fade in">
+			
+			
+			
+		</div>
+		
+	</div>
+	<br/>
+	<br/>
+</div>	
+
+<script type="text/javascript"></script>
+
+</body>
+</html>
