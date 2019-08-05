@@ -561,7 +561,8 @@ def rating_for_actions( log, examples, actions=[CLICK], after=False, group=['ses
         base_key += key + '_'
         
     mask = log.action_type.isin( actions )
-    mask = mask & ~log.ci_rating_percentage.isnull()
+    #mask = mask & ~log.ci_rating_percentage.isnull()
+    mask = mask & ~log.rating.isnull()
     mask = mask & (log.hidden == 0)
     
     if not after:
@@ -572,12 +573,13 @@ def rating_for_actions( log, examples, actions=[CLICK], after=False, group=['ses
     rating = pd.DataFrame()
     #rating[ base_key + 'min' ] = grouped['ci_rating_percentage'].min()
     #rating[ base_key + 'max' ] = grouped['ci_rating_percentage'].max()
-    rating[ base_key + 'mean' ] = grouped['ci_rating_percentage'].mean()
+    #rating[ base_key + 'mean' ] = grouped['ci_rating_percentage'].mean()
+    rating[ base_key + 'mean' ] = grouped['rating'].mean()
     
     examples = examples.merge( rating, left_on=group, right_index=True, how='left' )
     del rating
     
-    examples[base_key + 'mean_dist'] = examples['ci_rating_percentage'] - examples[base_key + 'mean']
+    examples[base_key + 'mean_dist'] = examples['rating'] - examples[base_key + 'mean']
     #examples[base_key + 'min_dist'] = examples['ci_rating_percentage'] - examples[base_key + 'min']
     #examples[base_key + 'max_dist'] = examples['ci_rating_percentage'] - examples[base_key + 'max']
     
@@ -609,7 +611,8 @@ def stars_for_actions( log, examples, actions=[CLICK], after=False, group=['sess
         base_key += key + '_'
         
     mask = log.action_type.isin( actions )
-    mask = mask & ~log.ci_stars.isnull()
+    mask = mask & ~log.stars.isnull()
+    #mask = mask & ~log.ci_stars.isnull()
     mask = mask & (log.hidden == 0)
     
     if not after:
@@ -620,12 +623,14 @@ def stars_for_actions( log, examples, actions=[CLICK], after=False, group=['sess
     rating = pd.DataFrame()
     #rating[ base_key + 'min' ] = grouped['ci_stars'].min()
     #rating[ base_key + 'max' ] = grouped['ci_stars'].max()
-    rating[ base_key + 'mean' ] = grouped['ci_stars'].mean()
+    #rating[ base_key + 'mean' ] = grouped['ci_stars'].mean()
+    rating[ base_key + 'mean' ] = grouped['stars'].mean()
     
     examples = examples.merge( rating, left_on=group, right_index=True, how='left' )
     del rating
     
-    examples[base_key + 'mean_dist'] = examples['tmp_stars'] - examples[base_key + 'mean']
+    #examples[base_key + 'mean_dist'] = examples['ci_stars'] - examples[base_key + 'mean']
+    examples[base_key + 'mean_dist'] = examples['stars'] - examples[base_key + 'mean']
     #examples[base_key + 'min_dist'] = examples['ci_stars'] - examples[base_key + 'min']
     #examples[base_key + 'max_dist'] = examples['ci_stars'] - examples[base_key + 'max']
     

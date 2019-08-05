@@ -13,11 +13,13 @@ import time
 from featuregen.popularity import print_col_list
 from featuregen.crawl import crawl_features
 from featuregen.geo import geo_features
-from domain.features import GEO_FEATURES, CRAWL_FEATURES
+from domain.features import GEO_FEATURES, CRAWL_FEATURES, META_FEATURES_MOST
+from featuregen.meta import meta_features
 
 
-TEST_FOLDER = BASE_PATH + 'competition/'
+TEST_FOLDER = BASE_PATH + 'sample_test/'
 CRAWL_PATH = BASE_PATH + 'crawled/'
+META_PATH = BASE_PATH + 'preprocessed/'
 SHIFTS=4
 
 def main():
@@ -26,6 +28,7 @@ def main():
     
     examples = crawl_features( TEST_FOLDER, CRAWL_PATH, log, examples )
     examples = geo_features(TEST_FOLDER, CRAWL_PATH, log, examples )
+    examples = meta_features(TEST_FOLDER, META_PATH, log, examples )
     
     cols = GEO_FEATURES
     cols.remove('distance_last')
@@ -37,6 +40,12 @@ def main():
     cols.remove('ri_rating_percentage')
     cols.remove('ri_rating_index')
     cols.remove('ci_stars')
+    for c in cols:
+        del examples[c]
+    
+    cols = META_FEATURES_MOST
+    cols.remove('stars')
+    cols.remove('rating')
     for c in cols:
         del examples[c]
     
@@ -73,6 +82,9 @@ def create_features( log, examples, shifts=SHIFTS ):
     
     for i in shift_list:
         shift( examples, 'session_id', i )
+    
+    examples['ri_rating_index'] = examples['rating']
+    examples['ci_stars'] = examples['stars']
     
     list_conext( examples, 'prices', shifts=shifts )
     list_conext( examples, 'ri_rating_percentage', shifts=shifts )

@@ -271,7 +271,12 @@ USER_FEATURES = [
     'user_rating_click_mean',
     'user_rating_click_mean_dist',
 ]
-
+USER_FEATURES_CRAWL = [
+    'user_distance_all_last_mean',
+    'user_distance_all_last_mean_dist',
+    'user_distance_click_last_mean',
+    'user_distance_click_last_mean_dist',
+    ]
 
 
 CRAWL_FEATURES = [
@@ -334,9 +339,14 @@ RANK_FEATURES = [
     'rank_pop_relative',
     'rank_prices',
     'rank_rating',
-    'rank_rating_price',
     'rank_latent',
     'rank_sum',
+]
+RANK_FEATURES_CRAWL = [
+    'rank_distance',
+    'rank_distance_price',
+    'rank_distance_rating',
+    #'rank_rating_price',
 ]
 
 META_FEATURES_MOST = [
@@ -400,6 +410,8 @@ META_FEATURES_MOST = [
     'Very Good Rating',
     'Wheelchair Accessible',
     'features',
+    'stars',
+    'rating'
 ]
 
 
@@ -691,6 +703,31 @@ LIST_CONTEXT_FEATURES = [
     'lc_ri_rating_percentage_pre3',
     #'lc_ri_rating_percentage_pre4',
 ]
+LIST_CONTEXT_FEATURES_CRAWL = [
+    'lc_distance_last_permean1',
+    'lc_distance_last_permean2',
+    'lc_distance_last_permean3',
+    'lc_distance_last_permean4',
+    'lc_distance_last_post1',
+    'lc_distance_last_post2',
+    'lc_distance_last_post3',
+    #'lc_distance_last_post4',
+    'lc_distance_last_pre1',
+    'lc_distance_last_pre2',
+    'lc_distance_last_pre3',
+    'lc_ri_rating_percentage_permean1',
+    'lc_ri_rating_percentage_permean2',
+    'lc_ri_rating_percentage_permean3',
+    'lc_ri_rating_percentage_permean4',
+    'lc_ri_rating_percentage_post1',
+    'lc_ri_rating_percentage_post2',
+    'lc_ri_rating_percentage_post3',
+    #'lc_ri_rating_percentage_post4',
+    'lc_ri_rating_percentage_pre1',
+    'lc_ri_rating_percentage_pre2',
+    'lc_ri_rating_percentage_pre3',
+    #'lc_ri_rating_percentage_pre4',
+    ]
 
 FEATURES = []
 FEATURES += CAT_FEATURES
@@ -716,3 +753,31 @@ FEATURES += RATIO_FEATURES
 #FEATURES += STACK_FEATURES
 FEATURES += RANK_FEATURES
 FEATURES += LIST_CONTEXT_FEATURES
+
+WO_CRAWL = []
+WO_CRAWL += CAT_FEATURES
+WO_CRAWL += EASY_FEATURES
+WO_CRAWL += POP_FEATURES
+WO_CRAWL += PRICE_FEATURES
+WO_CRAWL += SESSION_FEATURES
+WO_CRAWL += USER_FEATURES
+for f in USER_FEATURES_CRAWL:
+    WO_CRAWL.remove(f)
+    
+WO_CRAWL += POS_FEATURES
+
+WO_CRAWL += META_FEATURES_MOST
+WO_CRAWL += D2V_FEATURES
+
+WO_CRAWL += PROPERTIES_FEATURES
+WO_CRAWL += LATENT_SIM_FEATURES
+WO_CRAWL += COMBINE_FEATURES
+WO_CRAWL += TIME_FEATURES
+WO_CRAWL += RATIO_FEATURES
+WO_CRAWL += RANK_FEATURES
+for f in RANK_FEATURES_CRAWL:
+    WO_CRAWL.remove(f)
+
+WO_CRAWL += LIST_CONTEXT_FEATURES
+for f in LIST_CONTEXT_FEATURES_CRAWL:
+    WO_CRAWL.remove(f)

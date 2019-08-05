@@ -9,7 +9,7 @@ import time
 from config.globals import BASE_PATH
 from domain.action_types import CLICK, IMAGE, INFO, DEALS, RATING, SEARCH, POI, \
     DEST, FILTER, SORT
-from domain.features import PRICE_FEATURES, GEO_FEATURES
+from domain.features import PRICE_FEATURES, GEO_FEATURES, META_FEATURES_MOST
 from featuregen.geo import geo_features
 from featuregen.geo import haversine
 from featuregen.popularity import print_col_list
@@ -20,10 +20,12 @@ from featuregen.session import counts_for_mask, prices_for_actions, \
 from helper.df_ops import copy_features, reduce_mem_usage
 from helper.loader import load_hdfs, write_feather, load_feather
 import numpy as np
+from featuregen.meta import meta_features
 
 
-TEST_FOLDER = BASE_PATH + 'competition/'
+TEST_FOLDER = BASE_PATH + 'sample_test/'
 CRAWL_FOLDER = BASE_PATH + 'crawled/'
+META_FOLDER = BASE_PATH + 'preprocessed/'
 
 ACTION_MAP = {}
 
@@ -63,10 +65,17 @@ def main():
     cols.remove('distance_last')
     for c in cols:
         del examples[c]
+    
+    examples = meta_features( TEST_FOLDER, META_FOLDER, log, examples )
+    cols = META_FEATURES_MOST
+    cols.remove('stars')
+    cols.remove('rating')
+    for c in cols:
+        del examples[c]
         
-    user_features( TEST_FOLDER, log, examples, crawl_path=CRAWL_FOLDER, poi_path=POI_FOLDER, redo=True )
+    user_features( TEST_FOLDER, log, examples, crawl_path=CRAWL_FOLDER, poi_path=POI_FOLDER, meta_path=META_FOLDER, redo=True )
 
-def user_features(base_path, log, examples, price_path=None, crawl_path=None, poi_path=None, redo=False):
+def user_features(base_path, log, examples, price_path=None, crawl_path=None, poi_path=None, meta_path=None, redo=False):
     
     name = 'user_features'
     if price_path is None:
@@ -78,7 +87,7 @@ def user_features(base_path, log, examples, price_path=None, crawl_path=None, po
         features = features[features.session_id.isin( examples.session_id.unique() )]
         examples = copy_features( examples, features )
     else:
-        examples, cols = create_features( log, examples, price_path=price_path, crawl_path=crawl_path, poi_path=poi_path )
+        examples, cols = create_features( log, examples, price_path=price_path, crawl_path=crawl_path, poi_path=poi_path, meta_path=meta_path )
         examples = reduce_mem_usage(examples, cols=cols)
         write_feather( examples[['session_id','impressions'] + list(cols)], path )
         #examples[['session_id','impressions','label','step'] + list(cols)].to_csv( base_path + 'features/' + name + '.csv' )
@@ -86,7 +95,7 @@ def user_features(base_path, log, examples, price_path=None, crawl_path=None, po
         
     return examples
 
-def create_features( log, examples, price_path=None, crawl_path=None, poi_path=None ):
+def create_features( log, examples, price_path=None, crawl_path=None, poi_path=None, meta_path=None ):
     
     tstart = time.time()
     print( 'create_features user' )
@@ -94,8 +103,8 @@ def create_features( log, examples, price_path=None, crawl_path=None, poi_path=N
     cols_pre = examples.columns.values
     
     log, examples = user_price_features(log, examples, price_path=price_path)
-    log, examples = user_rating_features(log, examples, crawl_path=crawl_path)
-    log, examples = user_stars_features(log, examples, crawl_path=crawl_path)
+    log, examples = user_rating_features(log, examples, crawl_path=meta_path)
+    log, examples = user_stars_features(log, examples, crawl_path=meta_path)
     log, examples = user_distance_features(log, examples, crawl_path=crawl_path, poi_path=poi_path)
     
     log['session_hidden'] = log.groupby( 'session_id' ).hidden.transform(sum)
@@ -171,39 +180,43 @@ def user_price_features( log, examples, price_path=None ):
 
 def user_rating_features( log, examples, crawl_path=None ):
     
-    if 'ri_rating_percentage' not in examples.columns:  
-        examples = add_from_file( crawl_path + 'item_info/crawl_ci.csv', examples, to=['impressions'], filter=['ci_rating_percentage'] )
-    else:
-        examples['ci_rating_percentage'] = examples['ri_rating_percentage']
-    log = add_from_file( crawl_path + 'item_info/crawl_ci.csv', log, col=['item_id'], filter=['ci_rating_percentage'] )
+#     if 'ri_rating_percentage' not in examples.columns:  
+#         examples = add_from_file( crawl_path + 'item_info/crawl_ci.csv', examples, to=['impressions'], filter=['ci_rating_percentage'] )
+#     else:
+#         examples['ci_rating_percentage'] = examples['ri_rating_percentage']
+    #log = add_from_file( crawl_path + 'item_info/crawl_ci.csv', log, col=['item_id'], filter=['ci_rating_percentage'] )
+    log = add_from_file( crawl_path + 'item_metadata.csv', log, col=['item_id'], filter=['rating'] )
     
     examples = rating_for_actions(log, examples, actions=ITEM_ACTIONS, group=['user_id'], key='all', prefix='user')
     examples = rating_for_actions(log, examples, actions=[CLICK], group=['user_id'], key='click', prefix='user')
     examples = rating_for_actions(log, examples, actions=ITEM_ACTIONS, group=['user_id','city'], key='city_all', prefix='user')
     examples = rating_for_actions(log, examples, actions=[CLICK], group=['user_id','city'], key='city_click', prefix='user')
-    
-    del log['ci_rating_percentage']
-    del examples['ci_rating_percentage']
+
+    del log['rating']
+#     del log['ci_rating_percentage']
+#     del examples['ci_rating_percentage']
     
     return log, examples
 
 def user_stars_features( log, examples, crawl_path=None ):
     
-    if 'ci_stars' not in examples.columns:  
-        examples = add_from_file( crawl_path + 'item_info/crawl_ci.csv', examples, to=['impressions'], filter=['ci_stars'] )
-        examples['tmp_stars'] = examples['ci_stars']
-        del examples['ci_stars']
-    else:
-        examples['tmp_stars'] = examples['ci_stars']
-    log = add_from_file( crawl_path + 'item_info/crawl_ci.csv', log, col=['item_id'], filter=['ci_stars'] )
+#     if 'ci_stars' not in examples.columns:  
+#         examples = add_from_file( crawl_path + 'item_info/crawl_ci.csv', examples, to=['impressions'], filter=['ci_stars'] )
+#         examples['tmp_stars'] = examples['ci_stars']
+#         del examples['ci_stars']
+#     else:
+#         examples['tmp_stars'] = examples['ci_stars']
+    #log = add_from_file( crawl_path + 'item_info/crawl_ci.csv', log, col=['item_id'], filter=['ci_stars'] )
+    log = add_from_file( crawl_path + 'item_metadata.csv', log, col=['item_id'], filter=['stars'] )
     
     examples = stars_for_actions(log, examples, actions=ITEM_ACTIONS, group=['user_id'], key='all', prefix='user')
     examples = stars_for_actions(log, examples, actions=[CLICK], group=['user_id'], key='click', prefix='user')
     examples = stars_for_actions(log, examples, actions=ITEM_ACTIONS, group=['user_id','city'], key='city_all', prefix='user')
     examples = stars_for_actions(log, examples, actions=[CLICK], group=['user_id','city'], key='city_click', prefix='user')
     
-    del log['ci_stars']
-    del examples['tmp_stars']
+    del log['stars']
+#     del log['ci_stars']
+#     del examples['tmp_stars']
     
     return log, examples
 

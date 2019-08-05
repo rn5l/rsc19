@@ -14,20 +14,23 @@ from featuregen.popularity import print_col_list, pop_features
 from featuregen.latent_sim import latent_sim_features
 from featuregen.geo import geo_features
 from featuregen.crawl import crawl_features
+from featuregen.meta import meta_features
 
 
-TEST_FOLDER = BASE_PATH + 'competition/'
+TEST_FOLDER = BASE_PATH + 'sample_test/'
 CRAWL_FOLDER = BASE_PATH + 'crawled/'
 LATENT_FOLDER = BASE_PATH + 'crawled/'
+META_FOLDER = BASE_PATH + 'preprocessed/'
 
 def main():
     log = load_hdfs( TEST_FOLDER + 'data_log.hd5' )
     examples = load_hdfs( TEST_FOLDER + 'data_examples.hd5' )
     
     examples = pop_features(TEST_FOLDER, log, examples)
-    examples = crawl_features(TEST_FOLDER, CRAWL_FOLDER, log, examples)
+    #examples = crawl_features(TEST_FOLDER, CRAWL_FOLDER, log, examples)
     examples = geo_features(TEST_FOLDER, CRAWL_FOLDER, log, examples)
     examples = latent_sim_features(TEST_FOLDER, log, examples, LATENT_FOLDER)
+    examples = meta_features(TEST_FOLDER, META_FOLDER, log, examples)
     
     rank_features( TEST_FOLDER, log, examples, redo=True )
 
@@ -58,9 +61,11 @@ def create_features( log, examples ):
     
     examples = rank( examples, order=['pop_click','pop_all','pop_impressions'], ascending=False, key='pop_count' )
     examples = rank( examples, order=['pop_click_per_view_sessions','pop_click_per_view','pop_all_per_impression'], ascending=False, key='pop_relative' )
-    examples = rank( examples, order=['prices','ri_rating_percentage'], ascending=[True,False], key='prices' )
-    examples = rank( examples, order=['ri_rating_percentage','prices'], ascending=[False,True], key='rating' )
-    examples = rank( examples, order=['ci_rating_per_price','prices'], ascending=[False,True], key='rating_price' )
+    #examples = rank( examples, order=['prices','ri_rating_percentage'], ascending=[True,False], key='prices' )
+    examples = rank( examples, order=['prices','rating'], ascending=[True,False], key='prices' )
+    #examples = rank( examples, order=['ri_rating_percentage','prices'], ascending=[False,True], key='rating' )
+    examples = rank( examples, order=['rating','prices'], ascending=[False,True], key='rating' )
+    #examples = rank( examples, order=['ci_rating_per_price','prices'], ascending=[False,True], key='rating_price' )
     examples = rank( examples, order=['distance_last','prices'], ascending=[True,True], key='distance' )
     examples = rank( examples, order=['distance_last_per_price_norm','prices'], ascending=True, key='distance_price' )
     examples = rank( examples, order=['distance_last_per_rating','prices'], ascending=True, key='distance_rating' )
@@ -71,7 +76,7 @@ def create_features( log, examples ):
     examples['rank_sum'] += examples['rank_pop_relative']
     examples['rank_sum'] += examples['rank_prices']
     examples['rank_sum'] += examples['rank_rating']
-    examples['rank_sum'] += examples['rank_rating_price']
+    #examples['rank_sum'] += examples['rank_rating_price']
     examples['rank_sum'] += examples['rank_distance']
     examples['rank_sum'] += examples['rank_distance_price']
     examples['rank_sum'] += examples['rank_distance_rating']

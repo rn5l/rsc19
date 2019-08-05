@@ -13,7 +13,7 @@ from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection.univariate_selection import f_classif
 
 from config.globals import BASE_PATH
-from domain.features import FEATURES, CAT_FEATURES
+from domain.features import FEATURES, CAT_FEATURES, WO_CRAWL
 from evaluate import evaluate
 from featuregen.create_set import create_set
 from helper.df_ops import train_test_split, check_cols
@@ -24,7 +24,7 @@ import pandas as pd
 from helper.loader import ensure_dir
 
 RAW = 'raw/'
-SET = 'competition/'
+SET = 'sample_test/'
 
 CONF = {
     'train_only': False,
@@ -81,7 +81,7 @@ def main():
     if FS_IMP is not None:
         FEATURES_IMP = get_features_by_importance(FS_IMP)
     else:
-        FEATURES_IMP = FEATURES
+        FEATURES_IMP = WO_CRAWL
     
     print( [item for item, count in Counter(FEATURES).items() if count > 1] )
     

@@ -84,7 +84,7 @@ def create_set(base_path=SET, key='dataset', conf={}, redo=False):
         examples = crawl_features(base_path, conf['path_crawl'], log, examples, redo=redo)
         examples = geo_features(base_path, conf['path_crawl'], log, examples, redo=redo)
         examples = meta_features(base_path, conf['path_meta'], log, examples, latent=conf['meta_latent'], redo=redo)
-        examples = user_features(conf['path_session'], log, examples,crawl_path=conf['path_crawl'], poi_path=conf['path_poi'], redo=redo)
+        examples = user_features(conf['path_session'], log, examples,crawl_path=conf['path_crawl'], poi_path=conf['path_poi'], meta_path=conf['path_meta'], redo=redo)
         examples = position_features(base_path, log, examples, redo=redo)
         examples = properties_features(base_path, conf['path_meta'], log, examples, redo=redo)
         #examples = latent_features(base_path, log, examples, latent_path=conf['path_latent'], redo=redo)
